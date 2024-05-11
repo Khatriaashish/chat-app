@@ -105,7 +105,10 @@ const Signup = () => {
           </NavLink>
 
           <div>
-            <button className="btn btn-block btn-outline btn-sm mt-2">
+            <button
+              className="btn btn-block btn-outline btn-sm mt-2"
+              disabled={loading}
+            >
               Sign Up
             </button>
           </div>
