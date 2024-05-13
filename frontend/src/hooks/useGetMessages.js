@@ -7,12 +7,14 @@ const useGetMessages = () => {
   const { messages, setMessages, selectedConversation } = useConversation();
 
   useEffect(() => {
+    console.log("..");
     const getMessages = async () => {
       setLoading(true);
       try {
         const res = await fetch(`/api/v1/msg/${selectedConversation._id}`);
         const data = await res.json();
         if (data.error) throw new Error(data.error);
+        console.log(data);
         setMessages(data.result);
       } catch (error) {
         toast.error(error.message);
@@ -22,7 +24,7 @@ const useGetMessages = () => {
     };
 
     if (selectedConversation?._id) getMessages();
-  }, [selectedConversation._id, setMessages]);
+  }, [selectedConversation?._id, setMessages]);
 
   return { messages, loading };
 };
